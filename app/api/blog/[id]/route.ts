@@ -9,13 +9,10 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    // Optimized connection check
-    if (mongoose.connections[0].readyState !== 1) {
-      await connectDb();
-    }
+    // Get ID first (await it for dynamic routes)
+    const id = await params.id; // <-- Key fix here
 
-    const { id } = params;
-
+    // Validate ID format
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { error: 'Invalid blog ID format' },
@@ -23,19 +20,24 @@ export async function GET(
       );
     }
 
+    // Connect to DB only if needed
+    if (mongoose.connections[0].readyState !== 1) {
+      await connectDb();
+    }
+
+    // Find blog with lean for performance
     const blog = await BlogModel.findById(id).lean();
 
-    if (!blog || Object.keys(blog).length === 0) {
+    if (!blog) {
       return NextResponse.json(
         { error: 'Blog post not found' },
         { status: 404 }
       );
     }
 
+    // Secure response
     const response = NextResponse.json(blog, { status: 200 });
-    // Security headers
     response.headers.set('Cache-Control', 'no-store');
-    response.headers.set('X-Content-Type-Options', 'nosniff');
     return response;
 
   } catch (error) {
