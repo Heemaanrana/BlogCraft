@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 // GET blog by ID
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string; category: string } }
 ) {
   try {
     await connectDb();
