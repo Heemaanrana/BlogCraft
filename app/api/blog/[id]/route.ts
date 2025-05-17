@@ -5,13 +5,12 @@ import mongoose from 'mongoose';
 
 // GET blog by ID
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest, context: { params: { id: string } }
 ) {
   try {
     await connectDb();
 
-    const { id } = params;
+    const { id } = context.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json({ error: 'Invalid blog ID' }, { status: 400 });

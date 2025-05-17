@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, CalendarIcon, Clock, User } from "lucide-react"
+import { ArrowLeft, CalendarIcon, User } from "lucide-react"
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 

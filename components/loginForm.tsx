@@ -76,7 +76,7 @@ export default function RegisterForm() {
                         className="text-white text-sm mt-3 text-right"
                         href="/pages/register"
                     >
-                        Don't have an account? <span className="underline">Register</span>
+                        Do not have an account? <span className="underline">Register</span>
                     </Link>
                 </form>
             </div>

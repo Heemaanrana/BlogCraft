@@ -9,7 +9,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export default function CreateBlogPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   const [title, setTitle] = useState("");

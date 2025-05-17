@@ -63,7 +63,7 @@ export default function SignInPage() {
         {error && <p className="text-red-500 mt-4 text-sm">{error}</p>}
 
         <p className="text-gray-400 text-sm mt-6 text-center">
-          Don't have an account?{" "}
+          Do not have an account?{" "}
           <span className="text-purple-500 hover:underline cursor-pointer" onClick={() => router.push("/signup")}>
             Sign Up
           </span>

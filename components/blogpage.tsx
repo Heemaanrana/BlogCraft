@@ -23,8 +23,12 @@ export default function BlogPage() {
         if (!response.ok) throw new Error('Failed to fetch blogs');
         const data = await response.json();
         setBlogs(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unexpected error occurred');
+        }
       } finally {
         setLoading(false);
       }

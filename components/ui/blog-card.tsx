@@ -11,7 +11,7 @@ type BlogCardProps = {
 
 };
 
-export default function BlogCard({ title, content, date, author, id}: BlogCardProps) {
+export default function BlogCard({ title, date, author, id}: BlogCardProps) {
   return (
     <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-800/30 transition-all duration-300 overflow-hidden h-full flex flex-col rounded-xl p-6">
       {/* Title */}
