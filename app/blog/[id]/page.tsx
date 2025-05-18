@@ -71,8 +71,10 @@ export default function BlogPage() {
             </div>
           </div>
 
-          <div className="prose prose-lg prose-invert max-w-none">
-            <p>{data.content}</p>
+          <div
+           className="prose prose-lg prose-invert max-w-none"
+           style={{ whiteSpace: 'pre-line' }}>
+            {data.content}
           </div>
 
           
