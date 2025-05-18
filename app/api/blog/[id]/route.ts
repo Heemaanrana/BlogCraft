@@ -4,13 +4,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 
 // GET blog by ID
-export async function GET(
-  req: NextRequest,
-  context: { params: { id: string } } // Use context for params
-) {
+export async function GET(req: NextRequest) {
   try {
-    // Get ID from context.params
-    const id = context.params.id; // No need to await, params is synchronous
+    // Extract ID from URL
+    const url = new URL(req.url);
+    const id = url.pathname.split('/').pop(); // Get the last segment of the pathname
+
+    // Validate ID exists
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Blog ID is required' },
+        { status: 400 }
+      );
+    }
 
     // Validate ID format
     if (!mongoose.Types.ObjectId.isValid(id)) {
