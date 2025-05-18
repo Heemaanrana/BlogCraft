@@ -6,11 +6,11 @@ import mongoose from 'mongoose';
 // GET blog by ID
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } } // Use context for params
 ) {
   try {
-    // Get ID first (await it for dynamic routes)
-    const id = await params.id; // <-- Key fix here
+    // Get ID from context.params
+    const id = context.params.id; // No need to await, params is synchronous
 
     // Validate ID format
     if (!mongoose.Types.ObjectId.isValid(id)) {
