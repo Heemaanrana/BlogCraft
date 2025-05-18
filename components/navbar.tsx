@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">       
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-100 to-white">
-              BlogCraft
+              BlogCraft.
             </span>
           </Link>
 
